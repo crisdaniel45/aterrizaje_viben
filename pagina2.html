@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>furmulario sistemasviben</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .main-container {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .left-column {
+      flex: 1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .left-column img {
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .left-column h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .left-column p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      max-width: 400px;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebe5d;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    .whatsapp-btn i {
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+
+    .right-column {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-header h2 {
+      font-size: 1.8rem;
+      color: #764ba2;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.2s; }
+    .form-group:nth-child(2) { animation-delay: 0.4s; }
+    .form-group:nth-child(3) { animation-delay: 0.6s; }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #764ba2;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: #764ba2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      background: #5d3a7e;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .left-column, .right-column {
+        padding: 30px;
+      }
+      .left-column { order: 2; }
+      .right-column { order: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-container">
+  <div class="left-column">
+    <img src="img/img_vibensistemas.jpg" alt="Imagen descriptiva">
+    <h1>Únete a nuestra comunidad</h1>
+    <p>¿Sueñas con tener libertad financiera a través de bienes raíces pero no sabes por dónde empezar? Te guiamos paso a paso desde cero.</p>
+
+    <a href="https://wa.me/593TU_NUMERO" class="whatsapp-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+      Únete a nuestro grupo de WSP
+    </a>
+  </div>
+
+  <div class="right-column">
+    <div class="form-header">
+      <h2>Registrate a este evento infaltable</h2>
+    </div>
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo</label>
+        <input type="correo" id="correo" name="correo" required>
+      </div>
+      <div class="form-group">
+        <label for="numero">Numero</label>
+        <input type="numero" id="numero" name="numero" required>
+      </div>
+      <button type="submit" class="btn">Registrarme</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.form-group input').forEach(input => {
+    input.addEventListener('focus', function () {
+      this.previousElementSibling.style.color = '#764ba2';
+      this.previousElementSibling.style.transform = 'translateY(-5px)';
+    });
+
+    input.addEventListener('blur', function () {
+      if (this.value === '') {
+        this.previousElementSibling.style.color = '#555';
+        this.previousElementSibling.style.transform = 'translateY(0)';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,267 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academia Digital - Venta de Cursos Online</title>
-    <link rel="stylesheet" href="styles.css">
- 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistemas Viben</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .action-button, #startVideo {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px 40px;
+      font-size: 20px;
+      background-color: #FF5722;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .action-button.visible,
+    #startVideo.visible {
+      display: inline-block;
+    }
+
+    .action-button:hover,
+    #startVideo:hover {
+      background-color: #FF3D00;
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-container {
+      position: relative;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">Sistema Viben</a>
-            
-           
-        </nav>
-    </header>
-    
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Aprende habilidades para ganar dinero</h1>
-            
-            <div class="video-container">
-                <video width="560" height="315" controls autoplay muted loop>
-                    <source src="videos/video_prueba2.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </section>
-    
-    
-    
-    <section class="training-section">
-        <div class="section-title">
-            <h2>ENTRENAMIENTO INMOBILIARIO EXCLUSIVO</h2>
-            <p class="warning-text">Este Entrenamiento Será Retirado en:</p>
-            
-            <div class="countdown-timer">
-                <div class="timer-unit">
-                    <span class="timer-number" id="hours">08</span>
-                    <span class="timer-label">HORAS</span>
-                </div>
-                <div class="timer-unit">
-                    <span class="timer-number" id="minutes">24</span>
-                    <span class="timer-label">MINUTOS</span>
-                </div>
-                <div class="timer-unit">
-                    <span class="timer-number" id="seconds">32</span>
-                    <span class="timer-label">SEGUNDOS</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="training-highlights">
-            <h3>EN ESTE ENTRENAMIENTO DESCUBRIRÁS:</h3>
-            
-            <ul class="benefits-list">
-                <li>
-                    <span class="check-icon">☑</span>
-                    Cómo funcionan los negocios inmobiliarios y por qué son tan rentables...
-                </li>
-                <li>
-                    <span class="check-icon">☑</span>
-                    Cómo generar ingresos con bienes raíces en solo semanas, incluso si eres nuevo y sin abandonar tu trabajo principal...
-                </li>
-                <li>
-                    <span class="check-icon">☑</span>
-                    Por qué está altamente valorado y bien compensado un Facilitador Inmobiliario...
-                </li>
-                <li>
-                    <span class="check-icon">☑</span>
-                    Los retos que enfrenta un emprendedor inmobiliario y las herramientas que aceleran sus resultados...
-                </li>
-                <li>
-                    <span class="check-icon">☑</span>
-                    Cómo muchas personas han reemplazado su sueldo hasta 10 veces por mes con bienes raíces...
-                </li>
-                <li>
-                    <span class="check-icon">☑</span>
-                    Cómo la 'Crisis' está generando las más grandes oportunidades inmobiliarias...
-                </li>
-            </ul>
-            
-            <div class="cta-container">
-                <button class="cta-button">ACCEDER AL ENTRENAMIENTO</button>
-                <p class="limited-text">*Plazas limitadas - Oferta por tiempo limitado</p>
-            </div>
-        </div>
-    </section>
-    
-    <style>
-    .training-section {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
-    padding: 40px 20px;
-    border-radius: 10px;
-    margin: 30px 0;
-}
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">Sistema Viben</a>
+    </nav>
+  </header>
 
-.section-title h2 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Aprende habilidades para ganar dinero</h1>
 
-.warning-text {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #ffcc00;
-}
+      <div class="video-container">
+        <video
+          id="mainVideo"
+          width="560"
+          height="315"
+          playsinline
+          muted
+          oncontextmenu="return false"
+          style="background-color: black;"
+        >
+          <source src="videos/Conteo de 5 segundos.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
 
-.countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-}
+        <button id="startVideo" class="action-button visible">Ver video</button>
+        <button id="actionBtn" class="action-button">¡Quiero empezar ahora!</button>
+      </div>
+    </div>
+  </section>
 
-.timer-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const video = document.getElementById('mainVideo');
+      const actionBtn = document.getElementById('actionBtn');
+      const startBtn = document.getElementById('startVideo');
 
-.timer-number {
-    font-size: 36px;
-    font-weight: bold;
-    background: rgba(0,0,0,0.3);
-    padding: 10px 20px;
-    border-radius: 5px;
-    min-width: 80px;
-    text-align: center;
-}
+      let lastTime = 0;
 
-.timer-label {
-    font-size: 14px;
-    margin-top: 5px;
-    text-transform: uppercase;
-}
+      // Mostrar botón de inicio
+      startBtn.classList.add('visible');
 
-.training-highlights {
-    max-width: 800px;
-    margin: 0 auto;
-}
+      // Iniciar video con sonido al hacer clic en el botón
+      startBtn.addEventListener('click', function () {
+        video.muted = false;
+        video.play();
+        startBtn.style.display = 'none';
+      });
 
-.training-highlights h3 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.benefits-list {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 30px;
-}
-
-.benefits-list li {
-    margin-bottom: 15px;
-    font-size: 16px;
-    line-height: 1.5;
-    padding-left: 30px;
-    position: relative;
-}
-
-.check-icon {
-    position: absolute;
-    left: 0;
-    color: #ffcc00;
-}
-
-.cta-container {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.cta-button {
-    background: #ff6600;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    background: #e65c00;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.limited-text {
-    font-size: 14px;
-    margin-top: 10px;
-    font-style: italic;
-}
-    </style>
-    
-    <script>
-        // Fecha objetivo: 8h 24min 32s desde ahora (solo una vez)
-        const target = new Date();
-        target.setHours(target.getHours() + 8);
-        target.setMinutes(target.getMinutes() + 24);
-        target.setSeconds(target.getSeconds() + 32);
-    
-        function updateCountdown() {
-            const now = new Date();
-            const diff = target - now;
-    
-            const hours = Math.max(0, Math.floor(diff / (1000 * 60 * 60)));
-            const minutes = Math.max(0, Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
-            const seconds = Math.max(0, Math.floor((diff % (1000 * 60)) / 1000));
-    
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-    
-            if (diff <= 0) {
-                clearInterval(countdownInterval);
-                const warningElement = document.querySelector('.warning-text');
-                warningElement.innerHTML = '<span class="expired-message">¡El entrenamiento ha expirado!</span>';
-            }
+      // Bloquear adelantar (detectar seeking y controlar currentTime)
+      video.addEventListener('seeking', function () {
+        if (video.currentTime > lastTime + 0.01) {
+          video.currentTime = lastTime;
         }
-    
-        // Iniciar el contador
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Llamada inicial
-    </script>
+      });
 
-    
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>AcademiaDigital</h3>
-                <p>Transformando vidas a través de la educación en línea desde 2015.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Cursos</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Marketing</a></li>
-                    <li><a href="#">Negocios</a></li>
-                    <li><a href="#">Desarrollo Personal</a></li>
-                </ul>
-            </div>
+      video.addEventListener('timeupdate', function () {
+        lastTime = video.currentTime;
+      });
 
-        
-        <div class="copyright">
-            <p>&copy; 2025 Sistemasviben. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-    
+      // Mostrar botón de acción al finalizar
+      video.addEventListener('ended', function () {
+        actionBtn.classList.add('visible');
+      });
+
+      // Redirigir al hacer clic en "¡Quiero empezar ahora!"
+      actionBtn.addEventListener('click', function () {
+        window.location.href = 'pagina2.html';
+      });
+    });
+  </script>
 </body>
 </html>
+
+
+

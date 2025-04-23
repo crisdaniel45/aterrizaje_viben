@@ -519,4 +519,12 @@ height: 100%;
     margin-top: 10px;
     font-style: italic;
 }
+.action-button {
+    display: none;
+}
+
+.action-button.visible {
+    display: inline-block;
+}
+
 }
