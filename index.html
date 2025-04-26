@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistemas Viben</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .action-button, #startVideo {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #FF5722;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .action-button.visible,
+    #startVideo.visible {
+      display: inline-block;
+    }
+
+    .action-button:hover,
+    #startVideo:hover {
+      background-color: #FF3D00;
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    #mainVideo {
+      width: 100%;
+      height: auto;
+      display: block;
+      background-color: black;
+    }
+
+    @media (max-width: 768px) {
+      .action-button, #startVideo {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">Sistema Viben</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Aprende habilidades para ganar dinero</h1>
+
+      <div class="video-container">
+        <video
+          id="mainVideo"
+          playsinline
+          muted
+          oncontextmenu="return false"
+        >
+          <source src="videos/VIDEO DE ATERRIZAJE (1).mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+
+        <button id="startVideo" class="action-button visible">Ver video</button>
+        <button id="actionBtn" class="action-button">¡Quiero empezar ahora!</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const video = document.getElementById('mainVideo');
+      const actionBtn = document.getElementById('actionBtn');
+      const startBtn = document.getElementById('startVideo');
+
+      let lastTime = 0;
+
+      // Mostrar botón de inicio
+      startBtn.classList.add('visible');
+
+      // Iniciar video con sonido al hacer clic en el botón
+      startBtn.addEventListener('click', function () {
+        video.muted = false;
+        video.play().catch(e => console.error("Error al reproducir el video:", e));
+        startBtn.style.display = 'none';
+      });
+
+      // Bloquear adelantar (detectar seeking y controlar currentTime)
+      video.addEventListener('seeking', function () {
+        if (video.currentTime > lastTime + 0.01) {
+          video.currentTime = lastTime;
+        }
+      });
+
+      video.addEventListener('timeupdate', function () {
+        lastTime = video.currentTime;
+      });
+
+      // Mostrar botón de acción al finalizar
+      video.addEventListener('ended', function () {
+        actionBtn.classList.add('visible');
+      });
+
+      // Redirigir al hacer clic en "¡Quiero empezar ahora!"
+      actionBtn.addEventListener('click', function () {
+        window.location.href = 'pagina2.html';
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
